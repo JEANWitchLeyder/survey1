@@ -1,0 +1,123 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Study 2 - Academic Research</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #eff6ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.container {
+    background: white;
+    padding: 40px;
+    border-radius: 18px;
+    max-width: 480px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 8px 30px #00000015;
+}
+
+h1 {
+    color: #1e3a8a;
+    font-size: 26px;
+}
+
+h2 {
+    color: #2563eb;
+}
+
+p {
+    color: #475569;
+    line-height: 1.6;
+}
+
+button {
+    background: #2563eb;
+    color: white;
+    padding: 16px 32px;
+    border: none;
+    border-radius: 10px;
+    font-size: 18px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 15px;
+}
+
+button:hover {
+    background: #1d4ed8;
+}
+
+.note {
+    font-size: 13px;
+    color: #64748b;
+    margin-top: 20px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Study 2</h2>
+
+<h1>Consumer Behavior &amp; Online Shopping</h1>
+
+<p>You are invited to participate in an academic research study about online shopping and product recommendations.</p>
+
+<p>Please participate only once and do not participate if you have already completed another study in this research project.</p>
+
+<button onclick="startStudy()">Start Survey</button>
+
+<p class="note">
+Participation is voluntary. Thank you for supporting our research.
+</p>
+
+</div>
+
+<script>
+
+const links = [
+    "https://forms.gle/nrQqAmRzCbQRSZnq5",
+    "https://forms.gle/LbNzXdruwQokpAsV9",
+    "https://forms.gle/DRf52CPK5j6EzDSF6",
+    "https://forms.gle/CF3AsUgPYPR5sCQc7"
+];
+
+function startStudy() {
+
+    let assignment = localStorage.getItem("study2_assignment");
+
+    if (
+        assignment === null ||
+        !Number.isInteger(Number(assignment)) ||
+        Number(assignment) < 0 ||
+        Number(assignment) >= links.length
+    ) {
+        assignment = Math.floor(Math.random() * links.length);
+
+        localStorage.setItem(
+            "study2_assignment",
+            assignment
+        );
+    }
+
+    window.location.href = links[Number(assignment)];
+}
+
+</script>
+
+</body>
+</html>
